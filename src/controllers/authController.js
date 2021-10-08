@@ -1,17 +1,11 @@
 const express = require('express');
-//const bcrypt = require('bcryptjs');
-//const jwt = require('jsonwebtoken');
-
-//const authConfig = require('../config/auth');
 
 const CadastrarProdutos = require('../models/CadastrarProdutos');
 
 const router = express.Router();//serve para definir rotas para os produtos
 
-
 router.post('/registrar', async (req, res) => {
     const { nomeDoProduto } = req.body;
-
     try {
         if (await CadastrarProdutos.findOne({ nomeDoProduto }))
             return res.status(400).send({ erro: 'Produto ja existente!' })
@@ -33,18 +27,17 @@ router.get('/mostrar', async (req, res)=>{
     }
 });
 
-router.put('/atualizar', async (req, res)=>{
+router.put('/atualizar/:id', async (req, res)=>{
     try{
-        const produto = await CadastrarProdutos.updateOne(req.body);
+        const produto = await CadastrarProdutos.updateOne({_id: req.params.id },req.body);
 
-        return res.send(produto);
+        return res.json({message: 'Produto atualizado com sucesso!'});
     }catch{
-        return res.status(200).send({ ok: 'Produto atualizado com sucesso' });
+        return res.status(400).send({ erro: 'Erro ao atualizar produto' });
     }
 });
 
 router.delete('/apagar/:id', async (req, res)=>{
-
     try{
         const produto = await CadastrarProdutos.deleteOne({ _id: req.params.id});
 
