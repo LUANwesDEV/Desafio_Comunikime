@@ -5,12 +5,12 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-    valor:{
+    valor: {
         type: String,
         required: true,
-        
+
     },
-    categoria:{
+    categoria: {
         type: String,
         required: true,
     },
@@ -20,11 +20,11 @@ const UserSchema = new mongoose.Schema({
         lowercase: true,
     },
     createdAt: {  // Vai fazer a anotação do registro de quando foi criado.
-        type: Date, 
+        type: Date,
         default: Date.now,
     },
-}); 
+});
 
 const CadastrarProdutos = mongoose.model('CadastrarProdutos', UserSchema);
 
-module.exports = CadastrarProdutos; 
+module.exports = CadastrarProdutos;
