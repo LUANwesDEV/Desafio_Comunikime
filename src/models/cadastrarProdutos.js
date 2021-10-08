@@ -18,11 +18,10 @@ const UserSchema = new mongoose.Schema({
     },
     descricao: {
         type: String,
-        unique: true,
         required: true, // serve para informar ser obrigatorio colocar o email.
         lowercase: true,
     },
-    createdAt: {  // Vai fazer o registro e a anotação de quando foi criado.
+    createdAt: {  // Vai fazer a anotação do registro de quando foi criado.
         type: Date, 
         default: Date.now,
     },
@@ -35,6 +34,6 @@ const UserSchema = new mongoose.Schema({
 //     next();
 // });
 
-const CadastrarProdutos = mongoose.model('CadastrarProdutos', UserSchema);// Mudar para cadastrarProdutos!!
+const CadastrarProdutos = mongoose.model('CadastrarProdutos', UserSchema);
 
-module.exports = CadastrarProdutos; // Mudar para cadastrarProdutos!!
+module.exports = CadastrarProdutos; 

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const app = express(); 
 
+
 app.use(bodyParser.json()); // idicar que vai usar o bodyParser, para que aplicação entenda que vou mandar uma requisição em informações json.
 app.use(bodyParser.urlencoded({ extended: false}));//é pra ele entender quando eu passar paramentros via URL
 
